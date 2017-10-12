@@ -1,0 +1,13 @@
+https://book.cakephp.org/3.0/en/tutorials-and-examples/blog/blog.html
+
+errors
+	https://stackoverflow.com/questions/32073034/cakephp-3-failed-to-open-vendor-autoload-php-after-cloning-a-git-repository
+	https://stackoverflow.com/questions/28468625/laravel-5-failed-opening-required-bootstrap-vendor-autoload-php
+
+go to the app folder:
+	composer update --no-scripts 
+	composer install
+
+Run
+
+	bin/cake server -p 8765
