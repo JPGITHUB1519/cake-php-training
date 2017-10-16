@@ -45,6 +45,7 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         // load auth component an configuring redirect for login in and logout
         $this->loadComponent('Auth', [
+            'authorize' => ['Controller'],
             'loginRedirect' => [
                 'controller' => 'Articles',
                 'action' => 'index'
@@ -84,5 +85,14 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+    }
+
+    public function isAuthorized($user) {
+        // admin can access every cation
+        if(isset($user['role']) && $user['role'] == 'admin') {
+            return true;
+        }
+
+        return false;
     }
 }
