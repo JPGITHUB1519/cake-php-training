@@ -58,6 +58,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     // connecting routes
     $routes->connect('/', ['controller' => 'Articles', 'action' => 'index']);
+    $routes->extensions(['json','xml']);
 
     /**
      * Connect catchall routes for all controllers.
