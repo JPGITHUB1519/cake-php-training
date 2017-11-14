@@ -12,15 +12,22 @@
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <?= $this->Html->script('vendor/jquery-3.2.1.min') ?>
+    <?= $this->Html->script('vendor/jquery.ajax-cross-origin.min') ?>
 </head>
 <body>
     <div class="container">
+        <header class="row">
+            <div class="col-12">
+                <h1 class="text-center">Header</h1>
+            </div>
+        </header>
         <?= $this->fetch('content') ?>
+        <footer class="row">
+            <div class="col-12">
+                <h1 class="text-center">Footer</h1>
+            </div>
+        </footer>
     </div>
-    <footer>
-    </footer>
-
-    <?= $this->Html->script('vendor/jquery-3.2.1.min') ?>
-    <?= $this->Html->script('vendor/bootstrap.min.js') ?>
 </body>
 </html>
