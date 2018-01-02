@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/client.js"></script>
+    <script type="text/javascript" src="../js/vendor/handlebars-v4.0.11.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="articles-container"></div>
+    </div>
+
+    <script id="articles-template" type="text/x-handlebars-template" >
+        {{#each articles}}
+            <h1>{{title}}</h1>
+            <p>{{body}}<p>
+        {{/each}}
+    </script>
+</body>
+</html>
