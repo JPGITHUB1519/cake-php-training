@@ -17,13 +17,14 @@ $(function () {
             articlesView.init();
         },
 
-        getArticles: function(renderCallback) {
+        getArticles: function(callback) {
             $.ajax({
                 "url": getBlogApiUrl("articles"),
                 "type": "get"
             })
             .done(function(data) {
-                renderCallback(data);
+                // render callback or whatever
+                callback(data);
             });
         },
 
@@ -52,7 +53,6 @@ $(function () {
         init: function() {
           this.template =  $("#articles-template").html();
           this.articlesContainer = $("#articles-container");
-          controller.getArticleById(10);
           this.render();
         },
 
