@@ -51,4 +51,21 @@ class AppController extends Controller
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
     }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        // allow CORS
+        $this->response->header('Access-Control-Allow-Origin','*');
+    }
+
+    public function setRestResponse($data, $status="ok", $message=null)
+    {
+        $this->set([
+            'status' => $status,
+            'data' => $data,
+            'message' => $message,
+            '_serialize' => ['status', 'data', 'message']
+        ]);
+    }
 }

@@ -43,7 +43,17 @@ use Cake\Routing\Route\DashedRoute;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
+Router::scope('/api', function ($routes) {
+    $routes->setExtensions(['json']);
+    // api/v1
+    $routes->scope('/v1/', function($routes) {
+        // api/v1/battles
+        $routes->resources('Battles');
+    });
+});
+
 Router::scope('/', function (RouteBuilder $routes) {
+    $routes->extensions(['json', 'xml']);
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file
@@ -74,6 +84,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->fallbacks(DashedRoute::class);
 });
+
 
 /**
  * Load all plugin routes. See the Plugin documentation on

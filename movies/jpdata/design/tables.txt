@@ -1,0 +1,34 @@
+battles:
+    id
+    name
+    date
+
+movies:
+    id
+    name
+
+battle_movies:
+    battle_id
+    movie_id
+
+votes:
+    id
+    battle_id
+    movie_id
+    user_id
+    date
+
+users:
+    id
+    name
+
+// requirements
+
+get all battles and by id
+get all movies and by id
+get all users and by id
+get all movies from a battle
+get a movie from a battle
+get all votes from all the movies from a battle
+get vote from a individual movie on a battle
+get all user votes from differents movies in the differents battles

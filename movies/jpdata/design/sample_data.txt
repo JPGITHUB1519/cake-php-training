@@ -1,0 +1,43 @@
+Movies imdb list:
+    titanic - tt0120338
+    the mask - tt0110475
+    rocky - tt0075148
+    toy story - tt0114709
+    ratatouille - tt0382932
+
+
+week 1
+
+    1/1/2018
+        titanic -> 3 votes (jean, jose, carlos)
+        rocky   -> 1 votes (sergio)
+        the mask -> 1 vote (juan)
+
+week 2
+    1/7/2018
+        toy story -> 500 votes
+        ratatouille -> 10 votes votes
+
+users:
+    jean
+    jose
+    carlos
+    sergio
+    juan
+
+endpoints:
+
+    Battles:
+        /battle/
+        /battle?date=<date>
+        /battle/id
+        /battle/id/movies
+        /battle/id/movies/id
+
+
+    Votes:
+        /vote/results/battle_id/ -> get all votes from a battle
+        /votes/results/battle/battle_id/winner -> get the winner from a battle
+        /votes/results/battle/<battle_id>/movie/<movie_id> -> get stats from a movie in a battle
+
+        /vote/battle/battle_id/movie/movie_id -> post request

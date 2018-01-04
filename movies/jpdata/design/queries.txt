@@ -1,0 +1,37 @@
+get all battles and by id
+get all movies and by id
+get all users and by id
+
+get all movies from a battle
+    select * from battles_movies
+    inner join battles on battle_id = battles.id
+    inner join movies on movie_id = movies.id
+    where battle_id = 2;
+
+get a movie from a battle
+
+
+get all user votes from differents movies in the differents battles
+
+get vote from a individual movie on a battle
+    select movie_id, count(*) as votes
+    from votes
+    where battle_id = 1 and movie_id = 'tt0120338';
+    group by movie_id
+
+get all votes from all the movies from a battle
+    select movie_id, count(*) as votes
+    from votes
+    where battle_id = 1
+    group by movie_id
+    order by votes desc;
+
+get the winner from a battle
+    select movie_id, count(*) as votes
+    from votes
+    where battle_id = 1
+    group by movie_id
+    order by votes desc
+    limit 1;
+
+

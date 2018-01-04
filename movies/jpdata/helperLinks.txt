@@ -1,0 +1,3 @@
+Good Post about rest apis in cakephp
+
+    http://deadlytechnology.com/php/api-cakephp-app/
