@@ -28,14 +28,14 @@ class ArticlesController extends AppController
     {
         $article = $this->Articles->get($id);
         $user_id = $this->request->getParam('user_id');
-
-        if ($user_id) {
-            if ($article->user_id == $user_id) {
-                $this->setRestResponse($article);
-            } else {
-                $this->setRestResponse([]);
-            }
-        }
+         $this->setRestResponse($article);
+        // if ($user_id) {
+        //     if ($article->user_id == $user_id) {
+        //         $this->setRestResponse($article);
+        //     } else {
+        //         $this->setRestResponse([]);
+        //     }
+        // }
     }
 
 }

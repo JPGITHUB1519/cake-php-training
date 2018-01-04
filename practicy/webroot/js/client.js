@@ -17,13 +17,33 @@ $(function () {
             articlesView.init();
         },
 
-        getArticles: function() {
+        getArticles: function(renderCallback) {
             $.ajax({
                 "url": getBlogApiUrl("articles"),
                 "type": "get"
             })
             .done(function(data) {
-                articlesView.render(data);
+                renderCallback(data);
+            });
+        },
+
+        getArticleById: function($id) {
+            $.ajax({
+                "url": getBlogApiUrl("articles/" + $id),
+                "type": "get"
+            })
+            .done(function(data) {
+                console.log(data);
+            });
+        },
+
+        getUsers: function() {
+            $.ajax({
+                "url": getBlogApiUrl("users"),
+                "type": "get"
+            })
+            .done(function(data) {
+                console.log(data);
             });
         }
     }
@@ -32,21 +52,23 @@ $(function () {
         init: function() {
           this.template =  $("#articles-template").html();
           this.articlesContainer = $("#articles-container");
-
+          controller.getArticleById(10);
           this.render();
         },
 
         render: function(data) {
-            $.get(getBlogApiUrl("articles"), function(data) {
-                var template = Handlebars.compile(this.template);
-                var context = {
-                    "articles": data.data
-                }
+            // pass a render callback function to the controller
+            controller.getArticles(this.renderPost.bind(this));
+        },
 
-                var compiledTemplate = template(context);
-                this.articlesContainer.html(compiledTemplate);
-            }.bind(this));
-            // controller.getArticles();
+        renderPost: function(data) {
+            var template = Handlebars.compile(this.template);
+            var context = {
+                "articles": data.data
+            }
+
+            var compiledTemplate = template(context);
+            this.articlesContainer.html(compiledTemplate);
         }
     }
 
