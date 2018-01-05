@@ -1,5 +1,7 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\Api\V1;
+
+use App\Controller\Api\AppController;
 
 class MoviesController extends AppController
 {

@@ -12,7 +12,7 @@
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
-namespace App\Controller;
+namespace App\Controller\Api;
 
 
 use Cake\Controller\Controller;
@@ -58,5 +58,15 @@ class AppController extends Controller
         parent::beforeFilter($event);
         // allow CORS
         $this->response->header('Access-Control-Allow-Origin','*');
+    }
+
+    public function setRestResponse($data, $status="ok", $message=null)
+    {
+        $this->set([
+            'status' => $status,
+            'data' => $data,
+            'message' => $message,
+            '_serialize' => ['status', 'data', 'message']
+        ]);
     }
 }

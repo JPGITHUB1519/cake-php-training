@@ -22,7 +22,6 @@ use Cake\Core\Plugin;
 use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
-
 /**
  * The default class to use for all routes
  *
@@ -43,11 +42,21 @@ use Cake\Routing\Route\DashedRoute;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
-Router::scope('/api', function ($routes) {
-    $routes->setExtensions(['json']);
-    // api/v1
-    $routes->scope('/v1/', function($routes) {
-        // api/v1/battles
+// Router::scope('/api', function ($routes) {
+//     $routes->setExtensions(['json']);
+//     // api/v1
+//     $routes->scope('/v1/', function($routes) {
+//         // api/v1/battles
+//         $routes->resources('Battles', function($routes) {
+//             $routes->resources('Movies', ['prefix' => 'battles']);
+//         });
+//         $routes->resources('Movies');
+//     });
+// });
+
+Router::prefix('api', function($routes) {
+    $routes->prefix('v1', function ($routes) {
+        $routes->extensions(['json', 'xml']);
         $routes->resources('Battles', function($routes) {
             $routes->resources('Movies', ['prefix' => 'battles']);
         });
