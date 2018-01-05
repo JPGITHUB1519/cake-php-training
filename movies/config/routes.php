@@ -48,7 +48,10 @@ Router::scope('/api', function ($routes) {
     // api/v1
     $routes->scope('/v1/', function($routes) {
         // api/v1/battles
-        $routes->resources('Battles');
+        $routes->resources('Battles', function($routes) {
+            $routes->resources('Movies', ['prefix' => 'battles']);
+        });
+        $routes->resources('Movies');
     });
 });
 

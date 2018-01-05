@@ -3,10 +3,10 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 
-class BattlesTable extends Table
+class MoviesTable extends Table
 {
     public function initialize(array $config)
     {
-        $this->belongsToMany('Movies');
+        $this->belongsToMany('Battles');
     }
 }
