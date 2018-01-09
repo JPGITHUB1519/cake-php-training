@@ -17,7 +17,9 @@ class MoviesController extends AppController
     public function index()
     {
         $battleId = $this->request->getParam('battle_id');
-        $movies = $this->Battles->get($battleId)->contain('Movies');
+        $movies = $this->Battles->get($battleId, [
+            'contain' => ['Movies']
+        ]);
         $this->setRestResponse($movies);
     }
 }

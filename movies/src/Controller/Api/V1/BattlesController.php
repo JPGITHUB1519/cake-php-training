@@ -7,6 +7,7 @@ class BattlesController extends AppController
     public function initialize()
     {
         parent::initialize();
+        $this->loadModel('Votes');
         $this->loadComponent('RequestHandler');
     }
 
@@ -50,5 +51,10 @@ class BattlesController extends AppController
     {
         $battle = $this->Battles->get($id);
         $this->setRestResponse($battle);
+    }
+
+    public function votes() {
+        $votes = $this->Votes->find('all');
+        $this->setRestResponse($votes);
     }
 }
