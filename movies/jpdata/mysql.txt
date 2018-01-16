@@ -1,0 +1,9 @@
+Export mysql on mac
+
+    mysqldump --opt -u root -p movies > movies.sql
+
+    $ mysqldump --opt -u [uname] -p[pass] [dbname] > [backupfile.sql]
+
+
+Mysql on Mac  -> MySQL server PID file could not be found
+https://serverfault.com/questions/480889/mysql-server-pid-file-could-not-be-found error
