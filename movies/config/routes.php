@@ -59,6 +59,7 @@ Router::prefix('api', function($routes) {
         $routes->extensions(['json', 'xml']);
         $routes->resources('Battles', function($routes) {
             $routes->resources('Movies', ['prefix' => 'battles']);
+            $routes->resources('Votes', ['prefix' => 'battles']);
         });
         $routes->resources('Movies');
     });

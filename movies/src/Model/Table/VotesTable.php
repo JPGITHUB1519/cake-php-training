@@ -7,8 +7,9 @@ class VotesTable extends Table
 {
     public function initialize(array $config)
     {
-        $this->belongsToMany('Users');
-        $this->belongsToMany('Movies');
-        $this->belongsToMany('Movies');
+        $this->belongsTo('Battles');
+        $this->belongsTo('Movies');
+        $this->belongsTo('Users');
+
     }
 }

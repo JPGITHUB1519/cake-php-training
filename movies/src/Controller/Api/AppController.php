@@ -69,4 +69,31 @@ class AppController extends Controller
             '_serialize' => ['status', 'data', 'message']
         ]);
     }
+
+    /**
+      * function to filter a query by the http query strings parameters
+      * render its content if succesfull else show an error message
+      *
+      * @param Query $myArgument lazy loaded query to be filter
+      * @param Array list of valid filters in odery to filter the query
+      * @return void -> set a json response
+      */
+    public function filterByQueryStrings($query, $validFilters) {
+        $filters = $this->request->getQuery();
+        $invalidFilters = [];
+        foreach($filters as $key => $value) {
+            if (in_array($key, $validFilters)) {
+                $query = $query->where([$key => $value]);
+            } else {
+                $invalidFilters[] = $key;
+            }
+        }
+
+        if (empty($invalidFilters)) {
+            $this->setRestResponse($query);
+        } else {
+            $errorMessage = implode(",", $invalidFilters);
+            $this->setRestResponse([], 'fail', $errorMessage . self::INVALID_PARAMETERS_MESSAGE);
+        }
+    }
 }

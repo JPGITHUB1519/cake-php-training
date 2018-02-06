@@ -20,6 +20,6 @@ class MoviesController extends AppController
         $movies = $this->Battles->get($battleId, [
             'contain' => ['Movies']
         ]);
-        $this->setRestResponse($movies);
+        $this->setRestResponse($movies['movies'] ?? []);
     }
 }
